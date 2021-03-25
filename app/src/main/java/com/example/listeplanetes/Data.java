@@ -31,4 +31,8 @@ public class Data {
     public String[] getTaillePlanete(){
         return this.taillePlanetes;
     }
+
+    public ArrayList<Planete> getPlanetes(){
+        return this.planetes;
+    }
 }

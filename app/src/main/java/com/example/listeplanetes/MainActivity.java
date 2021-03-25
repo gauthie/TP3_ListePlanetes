@@ -15,31 +15,46 @@ import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Data> planetes;
-    private ListView listview;
-    private PlaneteAdapter adapter;
-    private Data data;
+    protected ArrayList<Data> planetes;
+    protected ListView listview;
+    protected PlaneteAdapter adapter;
+    protected Data data;
+    protected Button btnCheck;
+    protected Spinner spinner;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listitem);
-        Button btnCheck = (Button) findViewById(R.id.btnCheck);
-        btnCheck.setOnClickListener(btnCkeckOnClickListener);
+        setContentView(R.layout.activity_main);
         listview = (ListView) findViewById(R.id.listView);
+        data = new Data();
         adapter = new PlaneteAdapter(this, data);
         listview.setAdapter(adapter);
+        btnCheck = (Button) findViewById(R.id.btnCheck);
+        btnCheck.setEnabled(false);
+        btnCheck.setOnClickListener(btnCkeckOnClickListener);
     }
 
-    View.OnClickListener btnCkeckOnClickListener = new View.OnClickListener(){
-        public void onClick(View v){
+    View.OnClickListener btnCkeckOnClickListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            int i = 0;
+            String[] tailles = data.getTaillePlanete();
 
+            for (int j = 0; j < tailles.length; j++) {
+                v = listview.getChildAt(j);
+                spinner = v.findViewById(R.id.spinner);
+                String taille = spinner.getSelectedItem().toString();
+                if (taille.equals(tailles[j])) {
+                    i++;
+                }
+            }
+            Toast.makeText(MainActivity.this, i + " on " + tailles.length, Toast.LENGTH_LONG).show();
         }
     };
-
 }
