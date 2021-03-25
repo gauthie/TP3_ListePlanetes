@@ -25,9 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private PlaneteAdapter adapter;
     private Data data;
 
-
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listitem);

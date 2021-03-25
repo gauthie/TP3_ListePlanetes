@@ -21,31 +21,25 @@ class PlaneteAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private ArrayAdapter<String> spinadapter;
 
-
     public PlaneteAdapter(Context context, Data planetes){
         this.planetes = planetes;
         this.inflater = LayoutInflater.from(context);
         this.spinadapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, planetes.getTaillePlanete());
-
     }
-    @Override
+
     public int getCount() {
         return planetes.size();
     }
 
-    @Override
     public Object getItem(int i) {
         return planetes.get(i);
     }
 
-    @Override
     public long getItemId(int i) {
         return i;
     }
 
-
     public View getView(int position, View convertView, ViewGroup parent) {
-
         ViewHolder holder;
         View itemView = convertView;
         if (convertView == null) {
@@ -58,15 +52,10 @@ class PlaneteAdapter extends BaseAdapter {
         }else{
             holder = (ViewHolder)itemView.getTag();
         }
-
         holder.nomPlanete.setText(planetes.get(position).getNom());
         spinadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         holder.spinner.setAdapter(spinadapter);
-
-
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
-            @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 CheckBox checkBox = (CheckBox) compoundButton.findViewById(R.id.checkbox);
                 if (checkBox.isChecked()) {
@@ -78,11 +67,7 @@ class PlaneteAdapter extends BaseAdapter {
                 }
             }
         });
-
-
         return itemView;
-
-
     }
 
     private class ViewHolder{

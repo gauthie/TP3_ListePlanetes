@@ -20,7 +20,6 @@ public class Data {
         this.taillePlanetes = new String[]{"4900", "12000", "12800", "6800", "144000", "120000", "52000", "50000", "2300"};
     }
 
-
     public Planete get(int position){
         return this.planetes.get(position);
     }
@@ -32,7 +31,4 @@ public class Data {
     public String[] getTaillePlanete(){
         return this.taillePlanetes;
     }
-
-
-
 }
